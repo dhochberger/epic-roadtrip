@@ -1,0 +1,27 @@
+<div class="bg-image search-bg d-flex justify-content-center">
+    <div class="input-group input-group-lg search-bar d-flex flex-row">
+        <input
+            ngx-google-places-autocomplete
+            placeholder="Partir de ...."
+            class="form-control rounded w-50"
+            style="margin-left: 10px"
+            [options]="options"
+            #placesRef="ngx-places"
+            (onAddressChange)="handleStartAddressChange($event)"
+        />
+
+        <input
+            ngx-google-places-autocomplete
+            placeholder="Arriver à ...."
+            class="form-control rounded w-50"
+            style="margin-left: 10px"
+            [options]="options"
+            #placesRef="ngx-places"
+            (onAddressChange)="handleEndAddressChange($event)"
+        />
+
+        <button type="button" class="btn btn-warning ml-2 rounded">En route !</button>
+    </div>
+</div>
+
+<app-map-trip [addressStart]="this.addressStart" [addressEnd]="this.addressEnd"></app-map-trip>

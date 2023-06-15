@@ -1,0 +1,9 @@
+.search-bg {
+  background-image: url('../../../../assets/img/plage.jpg');
+  height: 500px;
+  background-repeat: no-repeat;
+}
+
+.search-bar {
+  margin: auto 20% auto 20%;
+}

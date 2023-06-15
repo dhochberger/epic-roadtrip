@@ -1,0 +1,119 @@
+<!--
+    Page to register
+-->
+
+<div class="container">
+    <form class="text-center border border-light p-5" action="#!" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <p class="h4 mb-4">Inscription</p>
+
+        <div class="md-form form-row mb-4">
+            <div class="col">
+                <!-- First name -->
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Prénom"
+                    formControlName="firstname"
+                    [ngClass]="{'is-invalid':submitted && f.firstname.errors}"
+                />
+                <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstname.errors.required">Prénom obligatoire</div>
+                </div>
+            </div>
+            <div class="col">
+                <!-- Last name -->
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Nom"
+                    formControlName="lastname"
+                    [ngClass]="{'is-invalid':submitted && f.lastname.errors}"
+                />
+                <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                    <div *ngIf="f.lastname.errors.required">Nom obligatoire</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Username -->
+        <div class="md-form">
+            <input
+                type="text"
+                class="form-control mb-4"
+                formControlName="username"
+                placeholder="Username"
+                [ngClass]="{'is-invalid':submitted && f.username.errors}"
+            />
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Username obligatoire</div>
+            </div>
+        </div>
+
+        <!-- E-mail -->
+        <div class="md-form">
+            <input
+                type="email"
+                class="form-control mb-4"
+                formControlName="email"
+                placeholder="E-mail"
+                [ngClass]="{'is-invalid':submitted && f.email.errors}"
+            />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email obligatoire</div>
+                <div *ngIf="f.email.errors.email">Email doit être une adresse mail valide</div>
+            </div>
+        </div>
+
+        <!-- Password -->
+        <div class="md-form">
+            <input
+                type="password"
+                class="form-control"
+                placeholder="Mot de passe"
+                formControlName="password"
+                [ngClass]="{'is-invalid':submitted && f.password.errors}"
+            />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Mot de passe obligatoire</div>
+                <div *ngIf="f.password.errors.minlength">Au moins 8 caractères</div>
+            </div>
+        </div>
+
+        <div class="md-form">
+            <input
+                type="password"
+                class="form-control"
+                placeholder="Confirmation du mot de passe"
+                formControlName="confirmPassword"
+                [ngClass]="{'is-invalid':submitted && f.confirmPassword.errors}"
+            />
+            <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                <div *ngIf="f.confirmPassword.errors.required">Confirmation du mot de passe obligatoire</div>
+                <div *ngIf="f.confirmPassword.errors.mustMatch">Les mots de passes ne correspondent pas</div>
+            </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="defaultRegisterFormNewsletter" />
+            <label class="custom-control-label" for="defaultRegisterFormNewsletter">S'inscrire à la newsletter </label>
+        </div>
+
+        <!-- Sign up and cancel button -->
+        <div class="text-center">
+            <button mdbBtn [disabled]="loading" class="btn btn-warning my-4" (click)="onSubmit()">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                S'inscrire
+            </button>
+            <button mdbBtn class="btn btn-secondary my-4" type="reset" (click)="onReset()" [routerLink]="'/login'">
+                Annuler
+            </button>
+        </div>
+
+        <!-- Login -->
+        <p>
+            Etes-vous déjà membre ?
+            <a href="/login">Connectez-vous</a>
+        </p>
+    </form>
+</div>

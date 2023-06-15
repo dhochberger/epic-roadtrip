@@ -1,0 +1,43 @@
+<div class="container">
+    <h1>Bonjour {{currentUser.user.firstname}}  {{currentUser.user.lastname}}!</h1>
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title"> Voici vos informations :</h2>
+            <p class="card-text">
+                Votre username : {{currentUser.user.username}} <br>
+                Votre e-mail : {{currentUser.user.email}}
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title"> Voici vos préférences de recherche:</h2>
+            <h3> pour les restaurants : </h3>
+            <div *ngFor="let preference of preferencesList">
+                <p class="card-text" *ngIf="preference.placeType === 'Restaurants'">
+                    {{preference.rayon}} {{preference.adress.lat}} {{preference.adress.long}}
+                 </p>
+            </div>
+            <h3> pour les hotels : </h3>
+            <div *ngFor="let preference of preferencesList">
+                <p class="card-text" *ngIf="preference.placeType === 'Hotels'">
+                    {{preference.rayon}} {{preference.adress.lat}} {{preference.adress.long}}
+                 </p>
+            </div>
+            <h3> pour les bars : </h3>
+            <div *ngFor="let preference of preferencesList">
+                <p class="card-text" *ngIf="preference.placeType === 'Bars'">
+                    {{preference.rayon}} {{preference.adress.lat}} {{preference.adress.long}}
+                 </p>
+            </div>
+            <h3> pour les transports : </h3>
+            <div *ngFor="let preference of preferencesList">
+                <p class="card-text" *ngIf="preference.placeType === 'Transports'">
+                    {{preference.rayon}} {{preference.adress.lat}} {{preference.adress.long}}
+                 </p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>

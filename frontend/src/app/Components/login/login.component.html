@@ -1,0 +1,57 @@
+<!--
+    Page to log in
+-->
+
+<div class="container">
+    <form class="text-center border border-light p-5" action="#!" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <p class="h4 mb-4">Connexion</p>
+
+        <!-- E-mail -->
+        <div class="md-form">
+            <input
+                type="email"
+                class="form-control mb-4"
+                formControlName="emailOrUsername"
+                placeholder="E-mail / Username"
+                [ngClass]="{'is-invalid':submitted && f.emailOrUsername.errors}"
+            />
+            <div *ngIf="submitted && f.emailOrUsername.errors" class="invalid-feedback">
+                <div *ngIf="f.emailOrUsername.errors.required">Votre e-mail ou votre username est obligatoire</div>
+            </div>
+        </div>
+
+        <!-- Password -->
+        <div class="md-form">
+            <input
+                type="password"
+                class="form-control"
+                placeholder="Mot de passe"
+                formControlName="password"
+                [ngClass]="{'is-invalid':submitted && f.password.errors}"
+            />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Mot de passe obligatoire</div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-around">
+            <div>
+                <mdb-checkbox> Rester connecté </mdb-checkbox>
+            </div>
+            <div>
+                <a href=""> Mot de passe oublié?</a>
+            </div>
+        </div>
+
+        <!-- Sign in button -->
+        <div class="text-center">
+            <button mdbBtn class="btn btn-warning my-4">Connexion</button>
+        </div>
+
+        <!-- Register -->
+        <p>
+            Pas encore membre ?
+            <a href="/register">Inscription</a>
+        </p>
+    </form>
+</div>

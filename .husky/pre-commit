@@ -1,0 +1,9 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+frontendFileCount="$(git diff --diff-filter=d --cached --name-only | grep -E 'frontend' | wc -l)"
+
+if [ ${frontendFileCount} -gt 0 ]; then
+echo "📁  File staged in frontend/. launch pretty-quick"
+  cd frontend && npx pretty-quick --staged
+fi

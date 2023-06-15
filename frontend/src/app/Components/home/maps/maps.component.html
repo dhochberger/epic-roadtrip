@@ -1,0 +1,14 @@
+<google-map height="500px" width="100%" [zoom]="zoom" [center]="center" [options]="options" (mapClick)="click($event)">
+    <map-marker
+        #markerElem
+        *ngFor="let marker of markers"
+        [position]="marker.position"
+        [label]="marker.label"
+        [title]=""
+    >
+    </map-marker>
+
+    <map-info-window>{{ infoContent }}</map-info-window>
+</google-map>
+
+        <app-region-menu *ngFor="let place of markers; let i = index" [place]="place"></app-region-menu>

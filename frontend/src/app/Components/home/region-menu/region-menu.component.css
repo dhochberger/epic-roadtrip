@@ -1,0 +1,15 @@
+.body-region {
+  background-color: lightblue;
+}
+
+.card {
+  height: 100px;
+  background-color: azure;
+  border-radius: 1em;
+  padding: 15px;
+}
+
+.card-buttongroup {
+  border-left: solid lightgray 1px;
+  padding: 10px;
+}

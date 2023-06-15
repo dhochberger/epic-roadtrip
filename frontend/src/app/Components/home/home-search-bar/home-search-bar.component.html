@@ -1,0 +1,49 @@
+<div class="bg-image search-bg d-flex justify-content-center">
+    <div class="input-group input-group-lg search-bar">
+        <button
+            class="btn dropdown-toggle btn-warning rounded typebtn mr-2"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+        >
+            {{rayonlabel}}
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" (click)="ChangeRayon(1000)">1 Km</a></li>
+            <li><a class="dropdown-item" (click)="ChangeRayon(3000)">3 Km</a></li>
+            <li><a class="dropdown-item" (click)="ChangeRayon(5000)">5 Km</a></li>
+        </ul>
+
+        <button
+            class="btn dropdown-toggle btn-warning rounded typebtn"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+        >
+            {{placeType}}
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" (click)="ChangePointInteret('restaurants')">Restaurants</a></li>
+            <li><a class="dropdown-item" (click)="ChangePointInteret('establishment')">Hotels</a></li>
+            <li><a class="dropdown-item" (click)="ChangePointInteret('bars')">Bars</a></li>
+            <li><a class="dropdown-item" (click)="ChangePointInteret('transports')">Transports</a></li>
+        </ul>
+
+        <input
+            ngx-google-places-autocomplete
+            placeholder="Où ?"
+            value="A proximité de ma position !"
+            class="form-control rounded"
+            style="margin-left: 10px"
+            [options]="options"
+            #placesRef="ngx-places"
+            (onAddressChange)="handleAddressChange($event)"
+        />
+
+        <button type="button" class="btn btn-warning" (click)="this.findPlaces()">Go !</button>
+
+        <button type="button" class="btn btn-warning" (click)="this.addPreference()"> Add Preference</button>
+    </div>
+</div>
+
+<app-maps [placeType]="this.placeType" [adress]="this.adress" [rayon]="this.rayon"></app-maps>
